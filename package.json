@@ -36,7 +36,6 @@
     "start": "npm run watch"
   },
   "dependencies": {
-    "alpinejs": "^2.7.0",
     "focus-visible": "^5.1.0"
   }
 }
