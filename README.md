@@ -2,11 +2,12 @@
 
 A starter setup for front-end development using Webpack.
 
-## Get up and running
+## Installation
 
 ```sh
 npm install
-npm start # aliases npm run watch
-npm run dev 
+npm run dev # build development assets
+npm run serve # start up a local static file server
+npm run watch # fire up Browsersync that proxies your local static file server
 npm run prod
 ```
