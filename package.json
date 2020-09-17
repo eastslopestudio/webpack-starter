@@ -1,0 +1,42 @@
+{
+  "name": "ess-webpack-starter",
+  "version": "1.0.0",
+  "description": "A starter setup for front-end development using Webpack.",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "file-loader": "^6.1.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "mini-css-extract-plugin": "^0.11.2",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^4.0.2",
+    "prettier": "^2.1.2",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "terser-webpack-plugin": "^4.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "watch": "cross-env NODE_ENV=development webpack --config webpack.config.js -w",
+    "start": "npm run watch"
+  },
+  "dependencies": {
+    "alpinejs": "^2.7.0",
+    "focus-visible": "^5.1.0"
+  }
+}
