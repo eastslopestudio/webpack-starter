@@ -6,6 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   entry: [
@@ -60,11 +61,13 @@ module.exports = {
     ],
   },
   optimization: {
-    minimizer: [new TerserPlugin({})],
+    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   plugins: [
     new ProgressBarPlugin(),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      verbose: true,
+    }),
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1,
     }),
@@ -78,7 +81,7 @@ module.exports = {
           to: 'images',
           force: true,
           globOptions: {
-            ignore: ['**/.gitkeeps*'],
+            ignore: ['**/.gitkeep*'],
           },
           noErrorOnMissing: true,
         },
