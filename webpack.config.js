@@ -6,12 +6,12 @@ const TerserPlugin = require('terser-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
   entry: [
     path.resolve(__dirname, './assets/js/site.js'),
-    path.resolve(__dirname, './assets/scss/site.scss'),
+    path.resolve(__dirname, './assets/css/site.css'),
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -38,12 +38,6 @@ module.exports = {
           },
           {
             loader: 'postcss-loader',
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-            },
           },
         ],
       },
@@ -61,7 +55,7 @@ module.exports = {
     ],
   },
   optimization: {
-    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserPlugin({}), new CssMinimizerPlugin()],
   },
   plugins: [
     new ProgressBarPlugin(),
@@ -77,8 +71,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, './assets/images'),
-          to: 'images',
+          from: path.resolve(__dirname, './assets/static'),
+          to: 'static',
           force: true,
           globOptions: {
             ignore: ['**/.gitkeep*'],
